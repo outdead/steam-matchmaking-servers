@@ -18,10 +18,10 @@ namespace steam_matchmaking_servers {
     class Program {
         public static async Task Main(string[] args) {
             var result = new List<ServerInfo>();
-            var appid = "108600";
+            var appid = "108600"; // TODO: Make appid configurable.
 
             try {
-                SteamClient.Init( 108600, true );
+                SteamClient.Init( 108600, true ); // TODO: Make appid configurable.
                 
                 var filter = new Steamworks.ServerList.Internet();
                 
@@ -57,7 +57,7 @@ namespace steam_matchmaking_servers {
                 
                 filter.OnChanges += OnServersUpdated;
 
-                await filter.RunQueryAsync( 30 );
+                await filter.RunQueryAsync( 30 ); // TODO: Make timeout configurable.
                 filter.Cancel();
                 
                 SteamClient.Shutdown();
